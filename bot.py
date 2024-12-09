@@ -2,8 +2,8 @@ from telegram import Update
 from telegram.ext import Updater, CommandHandler, CallbackContext
 import requests
 
-# Вставьте ваш токен
-BOT_TOKEN = 'ваш_токен_бота'
+# Укажите ваш токен прямо в коде
+BOT_TOKEN = "8081566164:AAEjd_dFGM9hW6CbM6sM_jp85j73L0WkaCw"
 
 def start(update: Update, context: CallbackContext):
     update.message.reply_text("Привет! Отправь /check <IP>, чтобы узнать информацию об IP-адресе.")
@@ -34,6 +34,10 @@ def check_ip(update: Update, context: CallbackContext):
         update.message.reply_text(f"Произошла ошибка: {str(e)}")
 
 def main():
+    if not BOT_TOKEN:
+        print("Ошибка: Токен бота не задан!")
+        return
+
     updater = Updater(BOT_TOKEN)
     dp = updater.dispatcher
 
